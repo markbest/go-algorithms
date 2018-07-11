@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func BubbleSort(data []int) []int {
 	total := len(data)
@@ -28,12 +26,4 @@ func BubbleSort1(data []int) []int {
 		}
 	}
 	return data
-}
-
-func main() {
-	data := []int{10, 76, 23, 35, 4, 24, 45}
-	sortData := BubbleSort(data)
-	fmt.Println(sortData)
-	sortData = BubbleSort1(data)
-	fmt.Println(sortData)
 }

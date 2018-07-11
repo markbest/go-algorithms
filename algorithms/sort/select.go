@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func SelectSort(array []int) []int {
 	var tmp, min, minKey int
@@ -20,10 +18,4 @@ func SelectSort(array []int) []int {
 		array[minKey] = tmp
 	}
 	return array
-}
-
-func main() {
-	data := []int{10, 76, 23, 35, 4, 24, 45}
-	sortData := SelectSort(data)
-	fmt.Println(sortData)
 }

@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func InsertSort(data []int) []int {
 	var key, pos int
@@ -15,10 +13,4 @@ func InsertSort(data []int) []int {
 		data[pos] = key
 	}
 	return data
-}
-
-func main() {
-	data := []int{10, 76, 23, 35, 4, 24, 45}
-	sortData := InsertSort(data)
-	fmt.Println(sortData)
 }

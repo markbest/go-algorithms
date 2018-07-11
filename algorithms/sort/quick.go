@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package sort
 
 func QuickSort(data []int) []int {
 	total := len(data)
@@ -33,10 +31,4 @@ func arrayMerge(left []int, key int, right []int) []int {
 		result = append(result, r)
 	}
 	return result
-}
-
-func main() {
-	data := []int{10, 76, 23, 35, 4, 24, 45}
-	sortData := QuickSort(data)
-	fmt.Println(sortData)
 }
