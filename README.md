@@ -1,14 +1,17 @@
 ## algorithms
 Golang算法和数据结构
 
-## 排序  
+## 排序算法  
 ```
 # 冒泡排序  
-bubble.php 
+bubble_sort.php 
+
 # 快速排序
-quick.php
+quick_sort.php
+
 # 插入排序
-insert.php
+insert_sort.php
+
 # 选择排序
-select.php
+select_sort.php
 ```
