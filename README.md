@@ -24,7 +24,7 @@ binary_search.go
 
 ## 数据结构
 ```
-# 顺序存储结构
+# 线性表的顺序存储
 line_list.go
 
 # 单链表
