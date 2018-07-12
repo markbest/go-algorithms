@@ -74,8 +74,8 @@ func (l *LinkNode) Get(i int) int {
 	return point.Data
 }
 
-// list all element
-func (l *LinkNode) List() {
+// Traverse all element
+func (l *LinkNode) Traverse() {
 	point := l.Next
 	for point != nil {
 		fmt.Println(point.Data, point.Next)

@@ -11,13 +11,13 @@ func TestSingleLinkedList(t *testing.T) {
 	for i := 0; i <= 10; i++ {
 		n.Insert(i, i)
 	}
-	n.List()
+	n.Traverse()
 	fmt.Printf("first node is %v\n", n.First())
 	fmt.Printf("last node is %v\n", n.Last())
 	fmt.Printf("length of list is %d\n", n.Length())
 
 	n.Delete(5)
-	n.List()
+	n.Traverse()
 	fmt.Printf("first node is %v\n", n.First())
 	fmt.Printf("last node is %v\n", n.Last())
 	fmt.Printf("length of list is %d\n", n.Length())
