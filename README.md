@@ -35,4 +35,7 @@ double_linked_list.go
 
 # 栈
 stack.go
+
+# 队列
+queue.go
 ```
