@@ -5,27 +5,27 @@ import (
 	"testing"
 )
 
-func TestSingleLinkedList(t *testing.T) {
-	l := &SingleList{0, nil, nil}
+func TestDoubleLinkedList(t *testing.T) {
+	l := DoubleList{0, nil, nil}
 
-	// append node
-	for i := 0; i <= 10; i++ {
+	// append
+	for i := 0; i < 10; i++ {
 		l.Append(i)
 	}
 	l.Traverse()
 	fmt.Println("------------------------------")
 
-	// insert node
-	l.Insert(14, 4)
+	// insert
+	l.Insert(11, 8)
 	l.Traverse()
 	fmt.Println("------------------------------")
 
-	// remove node
+	// remove
 	l.Remove(5)
 	l.Traverse()
 	fmt.Println("------------------------------")
 
-	// get node
-	node := l.Get(4)
+	// get
+	node := l.Get(3)
 	fmt.Println(node)
 }

@@ -29,4 +29,7 @@ line_list.go
 
 # 单链表
 single_linked_list.go
+
+# 双向链表
+double_linked_list.go
 ```

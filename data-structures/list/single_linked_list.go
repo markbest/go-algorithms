@@ -16,39 +16,37 @@ type SingleNode struct {
 }
 
 // append node
-func (l *SingleList) Append(node *SingleNode) bool {
-	if node == nil {
-		return false
-	}
-
+func (l *SingleList) Append(e int) bool {
+	newNode := &SingleNode{data: e}
 	if l.size == 0 {
-		l.head = node
+		l.head = newNode
 	} else {
 		oldTail := l.tail
-		oldTail.next = node
+		oldTail.next = newNode
 	}
-	l.tail = node
+	l.tail = newNode
 	l.size++
 	return true
 }
 
 // insert node
-func (l *SingleList) Insert(node *SingleNode, pos int) bool {
-	if node == nil || l.size == 0 || pos > l.size {
+func (l *SingleList) Insert(e int, pos int) bool {
+	if pos == 0 || pos >= l.size {
 		return false
 	}
 
+	newNode := &SingleNode{data: e}
 	if pos == 1 {
-		node.next = l.head
-		l.head = node
+		newNode.next = l.head
+		l.head = newNode
 	} else {
 		preItem := l.head
 		for i := 2; i < pos; i++ {
 			preItem = preItem.next
 		}
 
-		node.next = preItem.next
-		preItem.next = node
+		newNode.next = preItem.next
+		preItem.next = newNode
 	}
 	l.size++
 	return true
@@ -72,7 +70,7 @@ func (l *SingleList) Remove(pos int) bool {
 		node := preItem.next
 		preItem.next = node.next
 
-		if pos == l.size-1 {
+		if pos == l.size {
 			l.tail = preItem
 		}
 	}
