@@ -32,4 +32,7 @@ single_linked_list.go
 
 # 双向链表
 double_linked_list.go
+
+# 栈
+stack.go
 ```
