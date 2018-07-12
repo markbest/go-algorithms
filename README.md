@@ -21,3 +21,12 @@ select_sort.go
 # 二分查找
 binary_search.go
 ```
+
+## 数据结构
+```
+# 顺序存储结构
+line_list.go
+
+# 单链表
+single_linked_list.go
+```
