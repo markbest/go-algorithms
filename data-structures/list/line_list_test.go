@@ -5,12 +5,19 @@ import (
 )
 
 func TestLineList(t *testing.T) {
-	list := NewLineList()
-	list.Insert(18, 8)
-	t.Log(list.Dump())
-	t.Log(list.Len())
+	list := LineList{make([]int, 0), 0}
 
-	list.Delete(8)
-	t.Log(list.Dump())
-	t.Log(list.Len())
+	// append
+	for i := 0; i <= 10; i++ {
+		list.Append(i)
+	}
+	list.Traverse()
+
+	// insert
+	list.Insert(18, 8)
+	list.Traverse()
+
+	// remove
+	list.Remove(5)
+	list.Traverse()
 }

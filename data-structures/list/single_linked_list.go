@@ -4,92 +4,102 @@ import (
 	"fmt"
 )
 
-type LinkNode struct {
-	Data int
-	Next *LinkNode
+type SingleList struct {
+	size int
+	head *SingleNode
+	tail *SingleNode
 }
 
-// get first element
-func (l *LinkNode) First() *LinkNode {
-	if l.Next == nil {
-		return nil
-	}
-	return l.Next
+type SingleNode struct {
+	data int
+	next *SingleNode
 }
 
-// get last element
-func (l *LinkNode) Last() *LinkNode {
-	if l.Next == nil {
-		return nil
-	}
-
-	point := l.Next
-	for point != nil {
-		point = point.Next
-	}
-	return point
-}
-
-// insert element
-func (l *LinkNode) Insert(e int, i int) bool {
-	p := l
-	j := 1
-	for p != nil && j < i {
-		p = p.Next
-		j++
-	}
-	if p == nil || j > i {
+// append node
+func (l *SingleList) Append(node *SingleNode) bool {
+	if node == nil {
 		return false
 	}
-	s := &LinkNode{Data: e}
-	s.Next = p.Next
-	p.Next = s
+
+	if l.size == 0 {
+		l.head = node
+	} else {
+		oldTail := l.tail
+		oldTail.next = node
+	}
+	l.tail = node
+	l.size++
 	return true
 }
 
-// delete element
-func (l *LinkNode) Delete(i int) bool {
-	p := l
-	j := 1
-	for p != nil && j < i {
-		p = p.Next
-		j++
-	}
-	if p == nil || j > i {
+// insert node
+func (l *SingleList) Insert(node *SingleNode, pos int) bool {
+	if node == nil || l.size == 0 || pos > l.size {
 		return false
 	}
-	p.Next = p.Next.Next
-	return true
-}
 
-// get element
-func (l *LinkNode) Get(i int) int {
-	point := l.Next
-	for j := 1; j < i; j++ {
-		if point == nil {
-			return 0
+	if pos == 1 {
+		node.next = l.head
+		l.head = node
+	} else {
+		preItem := l.head
+		for i := 2; i < pos; i++ {
+			preItem = preItem.next
 		}
-		point = point.Next
+
+		node.next = preItem.next
+		preItem.next = node
 	}
-	return point.Data
+	l.size++
+	return true
 }
 
-// Traverse all element
-func (l *LinkNode) Traverse() {
-	point := l.Next
-	for point != nil {
-		fmt.Println(point.Data, point.Next)
-		point = point.Next
+// remove node
+func (l *SingleList) Remove(pos int) bool {
+	if pos >= l.size || pos == 0 {
+		return false
 	}
+
+	if pos == 1 {
+		preItem := l.head
+		l.head = preItem.next
+	} else {
+		preItem := l.head
+		for i := 1; i < pos-1; i++ {
+			preItem = preItem.next
+		}
+
+		node := preItem.next
+		preItem.next = node.next
+
+		if pos == l.size-1 {
+			l.tail = preItem
+		}
+	}
+
+	l.size--
+	return true
 }
 
-// get length
-func (l *LinkNode) Length() int {
-	length := 0
-	point := l.Next
-	for point != nil {
-		length++
-		point = point.Next
+// get node
+func (l *SingleList) Get(pos int) *SingleNode {
+	if pos >= l.size {
+		return nil
 	}
-	return length
+
+	item := l.head
+	for i := 1; i < pos; i++ {
+		item = item.next
+	}
+	return item
+}
+
+// traverse list
+func (l *SingleList) Traverse() {
+	item := l.head
+	fmt.Println(item)
+	for i := 0; i < l.size-1; i++ {
+		fmt.Println(item.next)
+		item = item.next
+	}
 }

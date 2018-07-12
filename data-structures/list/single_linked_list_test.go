@@ -6,19 +6,26 @@ import (
 )
 
 func TestSingleLinkedList(t *testing.T) {
-	n := &LinkNode{}
+	l := &SingleList{0, nil, nil}
 
+	// append node
 	for i := 0; i <= 10; i++ {
-		n.Insert(i, i)
+		l.Append(&SingleNode{i, nil})
 	}
-	n.Traverse()
-	fmt.Printf("first node is %v\n", n.First())
-	fmt.Printf("last node is %v\n", n.Last())
-	fmt.Printf("length of list is %d\n", n.Length())
+	l.Traverse()
+	fmt.Println("------------------------------")
 
-	n.Delete(5)
-	n.Traverse()
-	fmt.Printf("first node is %v\n", n.First())
-	fmt.Printf("last node is %v\n", n.Last())
-	fmt.Printf("length of list is %d\n", n.Length())
+	// insert node
+	l.Insert(&SingleNode{14, nil}, 4)
+	l.Traverse()
+	fmt.Println("------------------------------")
+
+	// remove node
+	l.Remove(5)
+	l.Traverse()
+	fmt.Println("------------------------------")
+
+	// get node
+	node := l.Get(4)
+	fmt.Println(node)
 }

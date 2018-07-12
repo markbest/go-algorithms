@@ -1,53 +1,48 @@
 package list
 
-type lineList struct {
-	elements []int
-	length   int
+import "fmt"
+
+type LineList struct {
+	data []int
+	size int
 }
 
-// new line list
-func NewLineList() *lineList {
-	return &lineList{elements: make([]int, 0), length: 0}
+// append element
+func (l *LineList) Append(e ...int) {
+	l.data = append(l.data, e...)
+	l.size++
 }
 
 // insert element
-func (l *lineList) Insert(e int, pos int) {
-	if pos > l.length {
-		for i := l.length; i < pos-1; i++ {
-			l.elements = append(l.elements, 0)
+func (l *LineList) Insert(e int, pos int) {
+	if pos > l.size {
+		for i := l.size; i < pos-1; i++ {
+			l.data = append(l.data, 0)
 		}
-		l.elements = append(l.elements, e)
-		l.length = pos
+		l.data = append(l.data, e)
+		l.size = pos
 	}
-	if pos < l.length {
-		temp := l.elements
-		l.elements = temp[:pos-1]
-		l.elements = append(l.elements, e)
-		l.elements = append(l.elements, temp[pos-1:]...)
-		l.length++
+	if pos < l.size {
+		temp := append([]int{}, l.data[pos-1:]...)
+		l.data = append(l.data[:pos-1], e)
+		l.data = append(l.data, temp...)
+		l.size++
 	}
 }
 
 // delete element
-func (l *lineList) Delete(pos int) {
-	if pos < l.length {
-		temp := l.elements
-		l.elements = temp[:pos-1]
-		l.elements = append(l.elements, temp[pos:]...)
-		l.length--
+func (l *LineList) Remove(pos int) {
+	if pos < l.size {
+		l.data = append(l.data[:pos-1], l.data[pos:]...)
+		l.size--
 	}
-	if pos == l.length {
-		l.elements = l.elements[:pos-1]
-		l.length--
+	if pos == l.size {
+		l.data = l.data[:pos-1]
+		l.size--
 	}
-}
-
-// get list length
-func (l *lineList) Len() int {
-	return l.length
 }
 
 // dump element
-func (l *lineList) Dump() []int {
-	return l.elements
+func (l *LineList) Traverse() {
+	fmt.Println(l.data)
 }
