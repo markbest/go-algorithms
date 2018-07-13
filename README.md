@@ -38,4 +38,7 @@ stack.go
 
 # 队列
 queue.go
+
+# 二叉树
+binary_tree.go
 ```
