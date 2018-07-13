@@ -2,42 +2,41 @@ package tree
 
 import (
 	"fmt"
-	"io"
 )
 
-type BinaryNode struct {
-	left  *BinaryNode
-	right *BinaryNode
+type BinarySearchTree struct {
+	root *BinarySearchNode
+}
+
+type BinarySearchNode struct {
+	left  *BinarySearchNode
+	right *BinarySearchNode
 	data  int
 }
 
 // insert node data
-func (n *BinaryNode) Insert(data int) {
+func (n *BinarySearchNode) Insert(data int) {
 	if n == nil {
 		return
 	} else if data <= n.data {
 		if n.left == nil {
-			n.left = &BinaryNode{left: nil, right: nil, data: data}
+			n.left = &BinarySearchNode{left: nil, right: nil, data: data}
 		} else {
 			n.left.Insert(data)
 		}
 	} else {
 		if n.right == nil {
-			n.right = &BinaryNode{left: nil, right: nil, data: data}
+			n.right = &BinarySearchNode{left: nil, right: nil, data: data}
 		} else {
 			n.right.Insert(data)
 		}
 	}
 }
 
-type BinaryTree struct {
-	root *BinaryNode
-}
-
 // insert tree node
-func (t *BinaryTree) Insert(data int) *BinaryTree {
+func (t *BinarySearchTree) Insert(data int) *BinarySearchTree {
 	if t.root == nil {
-		t.root = &BinaryNode{left: nil, right: nil, data: data}
+		t.root = &BinarySearchNode{left: nil, right: nil, data: data}
 	} else {
 		t.root.Insert(data)
 	}
@@ -45,7 +44,7 @@ func (t *BinaryTree) Insert(data int) *BinaryTree {
 }
 
 // find tree min node
-func (t *BinaryTree) FindMin() int {
+func (t *BinarySearchTree) FindMin() int {
 	node := t.root
 	for {
 		if node.left != nil {
@@ -57,7 +56,7 @@ func (t *BinaryTree) FindMin() int {
 }
 
 // find tree max node
-func (t *BinaryTree) FindMax() int {
+func (t *BinarySearchTree) FindMax() int {
 	node := t.root
 	for {
 		if node.right != nil {
@@ -69,7 +68,7 @@ func (t *BinaryTree) FindMax() int {
 }
 
 // find tree node
-func (t *BinaryTree) Find(v int) bool {
+func (t *BinarySearchTree) Contain(v int) bool {
 	node := t.root
 	for {
 		if node == nil {
@@ -84,16 +83,35 @@ func (t *BinaryTree) Find(v int) bool {
 	}
 }
 
-// print tree node
-func (t *BinaryTree) Print(w io.Writer, node *BinaryNode, ns int, ch rune) {
+// pre order traverse
+func (t *BinarySearchTree) PreTraverse(node *BinarySearchNode) {
 	if node == nil {
 		return
 	}
 
-	for i := 0; i < ns; i++ {
-		fmt.Fprint(w, " ")
+	fmt.Printf("%d ", node.data)
+	t.PreTraverse(node.left)
+	t.PreTraverse(node.right)
+}
+
+// mid order traverse
+func (t *BinarySearchTree) MidTraverse(node *BinarySearchNode) {
+	if node == nil {
+		return
 	}
-	fmt.Fprintf(w, "%c:%v\n", ch, node.data)
-	t.Print(w, node.left, ns+2, 'L')
-	t.Print(w, node.right, ns+2, 'R')
+
+	t.MidTraverse(node.left)
+	fmt.Printf("%d ", node.data)
+	t.MidTraverse(node.right)
+}
+
+// next order traverse
+func (t *BinarySearchTree) NextTraverse(node *BinarySearchNode) {
+	if node == nil {
+		return
+	}
+
+	t.NextTraverse(node.left)
+	t.NextTraverse(node.right)
+	fmt.Printf("%d ", node.data)
 }

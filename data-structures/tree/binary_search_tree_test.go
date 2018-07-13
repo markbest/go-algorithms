@@ -2,45 +2,32 @@ package tree
 
 import (
 	"fmt"
-	"os"
 	"testing"
 )
 
 func TestBinarySearchTree(t *testing.T) {
-	tree := &BinaryTree{}
-	tree.Insert(100).
-		Insert(-20).
-		Insert(-50).
-		Insert(-15).
-		Insert(-60).
-		Insert(50).
-		Insert(60).
-		Insert(55).
-		Insert(85).
-		Insert(15).
-		Insert(5).
-		Insert(-10)
-	tree.Print(os.Stdout, tree.root, 0, 'M')
+	tree := &BinarySearchTree{}
+	tree.Insert(100)
+	tree.Insert(-20)
+	tree.Insert(-50)
+	tree.Insert(-15)
+	tree.Insert(-60)
+	tree.Insert(50)
+	tree.Insert(60)
+	tree.Insert(55)
+	tree.Insert(85)
+	tree.Insert(15)
+	tree.Insert(5)
+	tree.Insert(-10)
+	fmt.Printf("最小节点: %d\n", tree.FindMin())
+	fmt.Printf("最大节点: %d\n", tree.FindMax())
+	fmt.Printf("查询节点: %d，查询结果: %t\n", 15, tree.Contain(15))
+	fmt.Println("前序遍历:")
+	tree.PreTraverse(tree.root)
 	fmt.Println()
-	fmt.Printf("min node value is: %d\n", tree.FindMin())
-	fmt.Printf("max node value is: %d\n", tree.FindMax())
-	fmt.Printf("search node value: %d result is: %t", 15, tree.Find(15))
+	fmt.Println("中序遍历:")
+	tree.MidTraverse(tree.root)
 	fmt.Println()
-	fmt.Println("------------------------------")
-	fmt.Println()
-
-	tree = &BinaryTree{}
-	for i := 0; i < 10; i++ {
-		tree.Insert(i)
-	}
-	tree.Print(os.Stdout, tree.root, 0, 'M')
-	fmt.Println()
-	fmt.Println("------------------------------")
-	fmt.Println()
-
-	tree = &BinaryTree{}
-	for i := 10; i >= 0; i-- {
-		tree.Insert(i)
-	}
-	tree.Print(os.Stdout, tree.root, 0, 'M')
+	fmt.Println("后序遍历:")
+	tree.NextTraverse(tree.root)
 }
