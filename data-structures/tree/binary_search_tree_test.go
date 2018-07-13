@@ -8,35 +8,39 @@ import (
 
 func TestBinarySearchTree(t *testing.T) {
 	tree := &BinaryTree{}
-	tree.insert(100).
-		insert(-20).
-		insert(-50).
-		insert(-15).
-		insert(-60).
-		insert(50).
-		insert(60).
-		insert(55).
-		insert(85).
-		insert(15).
-		insert(5).
-		insert(-10)
-	tree.print(os.Stdout, tree.root, 0, 'M')
+	tree.Insert(100).
+		Insert(-20).
+		Insert(-50).
+		Insert(-15).
+		Insert(-60).
+		Insert(50).
+		Insert(60).
+		Insert(55).
+		Insert(85).
+		Insert(15).
+		Insert(5).
+		Insert(-10)
+	tree.Print(os.Stdout, tree.root, 0, 'M')
+	fmt.Println()
+	fmt.Printf("min node value is: %d\n", tree.FindMin())
+	fmt.Printf("max node value is: %d\n", tree.FindMax())
+	fmt.Printf("search node value: %d result is: %t", 15, tree.Find(15))
 	fmt.Println()
 	fmt.Println("------------------------------")
 	fmt.Println()
 
 	tree = &BinaryTree{}
 	for i := 0; i < 10; i++ {
-		tree.insert(int64(i))
+		tree.Insert(i)
 	}
-	tree.print(os.Stdout, tree.root, 0, 'M')
+	tree.Print(os.Stdout, tree.root, 0, 'M')
 	fmt.Println()
 	fmt.Println("------------------------------")
 	fmt.Println()
 
 	tree = &BinaryTree{}
 	for i := 10; i >= 0; i-- {
-		tree.insert(int64(i))
+		tree.Insert(i)
 	}
-	tree.print(os.Stdout, tree.root, 0, 'M')
+	tree.Print(os.Stdout, tree.root, 0, 'M')
 }
