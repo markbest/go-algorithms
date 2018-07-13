@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestBinaryTree(t *testing.T) {
+func TestBinarySearchTree(t *testing.T) {
 	tree := &BinaryTree{}
 	tree.insert(100).
 		insert(-20).
