@@ -41,4 +41,7 @@ queue.go
 
 # 二叉搜索树
 binary_tree.go
+
+# 哈希表
+hash_map.go
 ```
