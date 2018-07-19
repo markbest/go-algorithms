@@ -39,9 +39,12 @@ stack.go
 # 队列
 queue.go
 
+# 哈希表
+hash_map.go
+
 # 二叉搜索树
 binary_search_tree.go
 
-# 哈希表
-hash_map.go
+# 平衡二叉树
+balanced_binary_tree.go
 ```
