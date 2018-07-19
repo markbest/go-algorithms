@@ -7,18 +7,10 @@ import (
 
 func TestBinarySearchTree(t *testing.T) {
 	tree := &BinarySearchTree{}
-	tree.Insert(100)
-	tree.Insert(-20)
-	tree.Insert(-50)
-	tree.Insert(-15)
-	tree.Insert(-60)
-	tree.Insert(50)
-	tree.Insert(60)
-	tree.Insert(55)
-	tree.Insert(85)
-	tree.Insert(15)
-	tree.Insert(5)
-	tree.Insert(-10)
+	elements := []int{100, -20, -50, -15, -60, 50, 60, 55, 85, 15, 5, -10}
+	for _, v := range elements {
+		tree.Insert(v)
+	}
 	fmt.Printf("最小节点: %d\n", tree.FindMin())
 	fmt.Printf("最大节点: %d\n", tree.FindMax())
 	fmt.Printf("查询节点: %d，查询结果: %t\n", 15, tree.Contain(15))

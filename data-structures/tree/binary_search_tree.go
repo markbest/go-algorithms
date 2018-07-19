@@ -15,20 +15,20 @@ type BinarySearchNode struct {
 }
 
 // insert node data
-func (n *BinarySearchNode) Insert(data int) {
+func (n *BinarySearchNode) insert(data int) {
 	if n == nil {
 		return
 	} else if data <= n.data {
 		if n.left == nil {
 			n.left = &BinarySearchNode{left: nil, right: nil, data: data}
 		} else {
-			n.left.Insert(data)
+			n.left.insert(data)
 		}
 	} else {
 		if n.right == nil {
 			n.right = &BinarySearchNode{left: nil, right: nil, data: data}
 		} else {
-			n.right.Insert(data)
+			n.right.insert(data)
 		}
 	}
 }
@@ -38,7 +38,7 @@ func (t *BinarySearchTree) Insert(data int) *BinarySearchTree {
 	if t.root == nil {
 		t.root = &BinarySearchNode{left: nil, right: nil, data: data}
 	} else {
-		t.root.Insert(data)
+		t.root.insert(data)
 	}
 	return t
 }
