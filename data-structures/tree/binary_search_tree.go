@@ -9,9 +9,10 @@ type BinarySearchTree struct {
 }
 
 type BinarySearchNode struct {
-	left  *BinarySearchNode
-	right *BinarySearchNode
-	data  int
+	parent *BinarySearchNode
+	left   *BinarySearchNode
+	right  *BinarySearchNode
+	data   int
 }
 
 // insert node data
@@ -20,13 +21,13 @@ func (n *BinarySearchNode) insert(data int) {
 		return
 	} else if data <= n.data {
 		if n.left == nil {
-			n.left = &BinarySearchNode{left: nil, right: nil, data: data}
+			n.left = &BinarySearchNode{left: nil, right: nil, parent: n, data: data}
 		} else {
 			n.left.insert(data)
 		}
 	} else {
 		if n.right == nil {
-			n.right = &BinarySearchNode{left: nil, right: nil, data: data}
+			n.right = &BinarySearchNode{left: nil, right: nil, parent: n, data: data}
 		} else {
 			n.right.insert(data)
 		}
@@ -36,7 +37,7 @@ func (n *BinarySearchNode) insert(data int) {
 // insert tree node
 func (t *BinarySearchTree) Insert(data int) *BinarySearchTree {
 	if t.root == nil {
-		t.root = &BinarySearchNode{left: nil, right: nil, data: data}
+		t.root = &BinarySearchNode{left: nil, right: nil, parent: nil, data: data}
 	} else {
 		t.root.insert(data)
 	}
@@ -74,6 +75,42 @@ func (t *BinarySearchTree) Contain(v int) bool {
 		if node == nil {
 			return false
 		} else if node.data == v {
+			return true
+		} else if node.data > v {
+			node = node.left
+		} else {
+			node = node.right
+		}
+	}
+}
+
+// remove tree node
+func (t *BinarySearchTree) Remove(v int) bool {
+	node := t.root
+	for {
+		if node == nil {
+			return false
+		} else if node.data == v {
+			if node.left != nil && node.right != nil {
+				tr := &BinarySearchTree{root: node.right}
+				min := tr.FindMin()
+				t.Remove(min)
+				node.data = min
+			}
+			if node.left != nil && node.right == nil {
+				node.parent.left = node.left
+			}
+			if node.left == nil && node.right != nil {
+				node.parent.right = node.right
+			}
+			if node.left == nil && node.right == nil {
+				if node.parent.left != nil && node.parent.left.data == v {
+					node.parent.left = nil
+				}
+				if node.parent.right != nil && node.parent.right.data == v {
+					node.parent.right = nil
+				}
+			}
 			return true
 		} else if node.data > v {
 			node = node.left

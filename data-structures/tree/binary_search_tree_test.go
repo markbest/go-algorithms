@@ -14,12 +14,20 @@ func TestBinarySearchTree(t *testing.T) {
 	fmt.Printf("最小节点: %d\n", tree.FindMin())
 	fmt.Printf("最大节点: %d\n", tree.FindMax())
 	fmt.Printf("查询节点: %d，查询结果: %t\n", 15, tree.Contain(15))
+
 	fmt.Println("前序遍历:")
 	tree.PreTraverse(tree.root)
 	fmt.Println()
+
 	fmt.Println("中序遍历:")
 	tree.MidTraverse(tree.root)
 	fmt.Println()
+
 	fmt.Println("后序遍历:")
 	tree.NextTraverse(tree.root)
+	fmt.Println()
+
+	fmt.Println("删除节点后前序遍历：")
+	tree.Remove(50)
+	tree.PreTraverse(tree.root)
 }
