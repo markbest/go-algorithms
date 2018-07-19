@@ -40,7 +40,7 @@ stack.go
 queue.go
 
 # 二叉搜索树
-binary_tree.go
+binary_search_tree.go
 
 # 哈希表
 hash_map.go
