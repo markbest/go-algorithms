@@ -20,6 +20,9 @@ select_sort.go
 ```
 # 二分查找
 binary_search.go
+
+# 字符串查找
+string_search.go
 ```
 
 ## 数据结构
