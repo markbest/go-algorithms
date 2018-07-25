@@ -2,8 +2,8 @@ package sort
 
 func QuickSort(data []int) []int {
 	total := len(data)
-	if total <= 1 {
-		return data
+	if total == 0 {
+		return nil
 	}
 
 	left := make([]int, 0)
@@ -23,12 +23,8 @@ func QuickSort(data []int) []int {
 
 func arrayMerge(left []int, key int, right []int) []int {
 	result := make([]int, 0)
-	for _, l := range left {
-		result = append(result, l)
-	}
+	result = append(result, left...)
 	result = append(result, key)
-	for _, r := range right {
-		result = append(result, r)
-	}
+	result = append(result, right...)
 	return result
 }
