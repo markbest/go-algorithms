@@ -15,8 +15,3 @@ func TestBubbleSort(t *testing.T) {
 	sortData := BubbleSort(data)
 	assert.Equal(t, sortData, rsData, "they should be equal")
 }
-
-func TestBubbleSort1(t *testing.T) {
-	sortData := BubbleSort1(data)
-	assert.Equal(t, sortData, rsData, "they should be equal")
-}
