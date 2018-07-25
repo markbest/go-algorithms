@@ -1,21 +1,25 @@
 package sort
 
-func SelectSort(array []int) []int {
-	var tmp, min, minKey int
-	total := len(array)
+func SelectSort(data []int) []int {
+	total := len(data)
+	if total == 0 {
+		return nil
+	}
+
+	var min, minKey int
 	for i := 0; i < total-1; i++ {
-		min = array[i]
+		min = data[i]
 		minKey = i
 		for j := i + 1; j < total; j++ {
-			if min > array[j] {
-				min = array[j]
+			if min > data[j] {
+				min = data[j]
 				minKey = j
 			}
 		}
 
-		tmp = array[i]
-		array[i] = array[minKey]
-		array[minKey] = tmp
+		tmp := data[i]
+		data[i] = data[minKey]
+		data[minKey] = tmp
 	}
-	return array
+	return data
 }
