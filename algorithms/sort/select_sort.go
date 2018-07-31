@@ -16,10 +16,7 @@ func SelectSort(data []int) []int {
 				minKey = j
 			}
 		}
-
-		tmp := data[i]
-		data[i] = data[minKey]
-		data[minKey] = tmp
+		data[i], data[minKey] = data[minKey], data[i]
 	}
 	return data
 }

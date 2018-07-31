@@ -9,9 +9,7 @@ func BubbleSort(data []int) []int {
 	for i := 0; i < total; i++ {
 		for j := 0; j < total-i-1; j++ {
 			if data[j] > data[j+1] {
-				tmp := data[j]
-				data[j] = data[j+1]
-				data[j+1] = tmp
+				data[j+1], data[j] = data[j], data[j+1]
 			}
 		}
 	}
