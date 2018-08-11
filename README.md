@@ -17,6 +17,9 @@ select_sort.go
 
 # 堆排序
 heap_sort.go
+
+# 希尔排序
+shell_sort.go
 ```
 
 ## 查找算法
