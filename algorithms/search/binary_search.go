@@ -1,11 +1,9 @@
 package search
 
-import "math"
-
 func BinarySearch(data []int, v int) int {
-	left, right, mid := 1, len(data), 0
+	left, right, mid := 0, len(data)-1, 0
 	for {
-		mid = int(math.Floor(float64((left + right) / 2)))
+		mid = left + (right-left)/2
 		if data[mid] > v {
 			right = mid - 1
 		} else if data[mid] < v {
