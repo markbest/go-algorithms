@@ -20,6 +20,9 @@ heap_sort.go
 
 # 希尔排序
 shell_sort.go
+
+# 归并排序
+merge_sort.go
 ```
 
 ## 查找算法
