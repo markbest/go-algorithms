@@ -14,6 +14,9 @@ insert_sort.go
 
 # 选择排序
 select_sort.go
+
+# 堆排序
+heap_sort.go
 ```
 
 ## 查找算法
